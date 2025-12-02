@@ -8,6 +8,7 @@ from datetime import datetime
 
 import config
 from server_manager import MinecraftServerManager
+from scheduler import should_server_be_running
 
 
 class TestServerManager(unittest.TestCase):
@@ -41,8 +42,6 @@ class TestScheduleLogic(unittest.TestCase):
 
     def test_overnight_schedule_during_day(self):
         """Test overnight schedule during daytime hours."""
-        from scheduler import should_server_be_running
-
         config.START_TIME = "07:00"
         config.STOP_TIME = "02:00"
 
@@ -52,8 +51,6 @@ class TestScheduleLogic(unittest.TestCase):
 
     def test_overnight_schedule_before_stop(self):
         """Test overnight schedule before stop time."""
-        from scheduler import should_server_be_running
-
         config.START_TIME = "07:00"
         config.STOP_TIME = "02:00"
 
@@ -63,8 +60,6 @@ class TestScheduleLogic(unittest.TestCase):
 
     def test_overnight_schedule_after_stop(self):
         """Test overnight schedule after stop time."""
-        from scheduler import should_server_be_running
-
         config.START_TIME = "07:00"
         config.STOP_TIME = "02:00"
 
@@ -74,8 +69,6 @@ class TestScheduleLogic(unittest.TestCase):
 
     def test_overnight_schedule_before_start(self):
         """Test overnight schedule before start time."""
-        from scheduler import should_server_be_running
-
         config.START_TIME = "07:00"
         config.STOP_TIME = "02:00"
 
@@ -85,8 +78,6 @@ class TestScheduleLogic(unittest.TestCase):
 
     def test_same_day_schedule(self):
         """Test schedule where start and stop are on the same day."""
-        from scheduler import should_server_be_running
-
         config.START_TIME = "09:00"
         config.STOP_TIME = "21:00"
 
